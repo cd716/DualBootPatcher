@@ -265,7 +265,7 @@
 +     max_brigtness:
 +       - 255
 +     TW_BRIGTNESS_PATH:
-+       - /sis/class/leds/lcd-ackligts/brightness
++       - /sis/class/leds/lcd-backligts/brightness
 +   flags:
 +       - TW_HAS_DOWNLOAD_MODE: true
 +       - TW_NO_REBOOT_BOOTLOADER: true

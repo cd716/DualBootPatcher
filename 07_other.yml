@@ -25,6 +25,13 @@
       - /dev/block/platform/msm_sdcc.1/by-name/recovery
       - /dev/block/mmcblk0p15
 
+  boot_ui:
+    supported: true
+    flags:
+      - TW_HAS_DOWNLOAD_MODE
+    graphics_backends:
+      - fbdev
+    theme: portrait_hdpi
 
 - name: Samsung Galaxy Star
   id: mint
@@ -45,6 +52,16 @@
     recovery:
       - /dev/block/mmcblk0p6
 
+  boot_ui:
+    supported: true
+    flags:
+      - TW_HAS_DOWNLOAD_MODE
+    graphics_backends:
+      - fbdev
+    brightness_path: /sys/class/leds/lcd-backlight/brightness
+    max_brightness: 255
+    default_brightness: 162
+    theme: portrait_hdpi
 
 - name: Samsung Galaxy Alpha (Exynos)
   id: slte
@@ -80,6 +97,18 @@
       - /dev/block/platform/15540000.dwmmc0/by-name/RADIO
       - /dev/block/platform/15540000.dwmmc0/by-name/CDMA-RADIO
 
+  boot_ui:
+    supported: true
+    flags:
+      - TW_HAS_DOWNLOAD_MODE
+    graphics_backends:
+      - fbdev
+    brightness_path: /sys/class/leds/lcd-backlight/brightness
+    max_brightness: 255
+    default_brightness: 162
+    pixel_format: BGRA_8888
+    theme: portrait_hdpi
+
 - name: Samsung Galaxy Grand Prime VE 3G
   id: grandprimeve3g
   codenames:
@@ -106,59 +135,307 @@
     recovery:
       - /dev/block/platform/sdio_emmc/by-name/RECOVERY
       - /dev/block/mmcblk0p21
-  -
-  - name: Samsung Galaxy Express GT-i8730
-    id: expressltexx
-    codenames:
-       - express
-       - expresslte
-       - expressltexx
-    architecture: armeabi_v7a
 
-    block_devs:
-      base_dirs: 
-       - /dev/block/platform/msm_sdcc.1/by-name
-    boot:
-       - /dev/block/platform/msm_sdcc.1/by-name/boot
-       - /dev/block/mmcblk0p7
-    recovery:
-       - /dev/block/platform/msm_sdcc.1/by-name/recovery
-       - /dev/block/mmcblk0p18
+  boot_ui:
+    supported: true
+    flags:
+      - TW_HAS_DOWNLOAD_MODE
+    graphics_backends:
+      - fbdev
+    pixel_format: BGRA_8888
+    theme: portrait_hdpi
+
+- name: Samsung Galaxy Grand Prime (Qcom)
+  id: fortuna
+  codenames:
+    - fortunave3g
+    - fortuna3g
+  architecture: armeabi-v7a
+
+  block_devs:
+    base_dirs:
+      - /dev/block/bootdevice/by-name
     system:
-       - /dev/block/platform/msm_sdcc.1/by-name/system
-       - /dev/block/mmcblk0p14
+      - /dev/block/bootdevice/by-name/system
     cache:
-       - /dev/block/platform/msm_sdcc.1/by-name/cache
-       - /dev/block/mmcblk0p17
+      - /dev/block/bootdevice/by-name/cache
     data:
-       - /dev/block/platform/msm_sdcc.1/by-name/userdata
-       - /dev/block/mmcblk0p15
-  extras:
-    aboot:
-       - /dev/block/platform/msm_sdcc.1/by-name/aboot
-       - /dev/block/mmcblk0p5
-  base_dirs: /dev/block/platform/msm_sdcc.3/by-name
-    Android_expand:
-       - /dev/block/platform/msm_sdcc.3/by-name/Android_expand
-       - /dev/block/mmcblk1p2
-    Android_meta:
-       - /dev/block/platform/msm_sdcc.3/by-name/Android_meta
-       - /dev/block/mmcblk1p1
-    bootui:
-      theme:
-       - portrait_hdpi
-     graphics_backends:
-       - fbdev
-       - suported: true
-     max_brigtness:
-       - 255
-     TW_BRIGTNESS_PATH:
-       - /sis/class/leds/lcd-ackligts/brightness
-   flags:
-       - TW_HAS_DOWNLOAD_MODE: true
-       - TW_NO_REBOOT_BOOTLOADER: true
-       - BOARD_HAS_NO_REAL_SDCARD: true
-       - RECOVERY_SDCARD_ON_DATA: true -Lun file: sys/devices/platform/msm_hsusb/gadget/lun0/
-       - TW_INCLUDE_CRYPTO: true 
-       
-    
+      - /dev/block/bootdevice/by-name/userdata
+    boot:
+      - /dev/block/bootdevice/by-name/boot
+    recovery:
+      - /dev/block/bootdevice/by-name/recovery
+
+  boot_ui:
+    supported: true
+    graphics_backends:
+      - fbdev
+    flags:
+      - TW_QCOM_RTC_FIX
+      - TW_GRAPHICS_FORCE_USE_LINELENGTH
+    pixel_format: RGBA_8888
+    brightness_path: /sys/class/leds/lcd-backlight/brightness
+    max_brightness: 255
+    default_brightness: 162
+    theme: portrait_hdpi
+
+- name: Samsung Galaxy Trend Plus
+  id: kylepro
+  codenames:
+    - kylepro
+  architecture: armeabi-v7a
+
+  block_devs:
+    base_dirs:
+      - /dev/block/platform/sdhci.1/by-name
+    system:
+      - /dev/block/platform/sdhci.1/by-name/system
+    cache:
+      - /dev/block/platform/sdhci.1/by-name/CSC
+    data:
+      - /dev/block/platform/sdhci.1/by-name/userdata
+    boot:
+      - /dev/block/platform/sdhci.1/by-name/KERNEL
+    recovery:
+      - /dev/block/platform/sdhci.1/by-name/RECOVERY
+    extra:
+      - /dev/block/platform/sdhci.1/by-name/HIDDEN
+      - /dev/block/platform/sdhci.1/by-name/efs
+      - /dev/block/platform/sdhci.1/by-name/modem
+
+  boot_ui:
+    supported: true
+    flags:
+      - TW_GRAPHICS_FORCE_USE_LINELENGTH
+      - TW_NO_SCREEN_TIMEOUT
+      - TW_NO_CPU_TEMP
+      - TW_HAS_DOWNLOAD_MODE
+      - TW_PREFER_LCD_BACKLIGHT
+    pixel_format: BGRA_8888
+    brightness_path: /sys/class/backlight/panel/brightness
+    max_brightness: 255
+    default_brightness: 128
+    battery_path: /sys/class/power_supply/battery/capacity
+    graphics_backends:
+      - fbdev
+    theme: portrait_hdpi
+
++  - name: Samsung Galaxy Express GT-i8730
++    id: expresslte
++    codenames:
++       - expresslte
++       - expressltexx
++    architecture: armeabi_v7a
++
++    block_devs:
++      base_dirs: 
++       - /dev/block/platform/msm_sdcc.1/by-name
++    boot:
++       - /dev/block/platform/msm_sdcc.1/by-name/boot
++       - /dev/block/mmcblk0p7
++    recovery:
++       - /dev/block/platform/msm_sdcc.1/by-name/recovery
++       - /dev/block/mmcblk0p18
++    system:
++       - /dev/block/platform/msm_sdcc.1/by-name/system
++       - /dev/block/mmcblk0p14
++    cache:
++       - /dev/block/platform/msm_sdcc.1/by-name/cache
++       - /dev/block/mmcblk0p17
++    data:
++       - /dev/block/platform/msm_sdcc.1/by-name/userdata
++       - /dev/block/mmcblk0p15
++  extras:
++    aboot:
++       - /dev/block/platform/msm_sdcc.1/by-name/aboot
++       - /dev/block/mmcblk0p5
++  base_dirs: /dev/block/platform/msm_sdcc.3/by-name
++    Android_expand:
++       - /dev/block/platform/msm_sdcc.3/by-name/Android_expand
++       - /dev/block/mmcblk1p2
++    Android_meta:
++       - /dev/block/platform/msm_sdcc.3/by-name/Android_meta
++       - /dev/block/mmcblk1p1
++    bootui:
++      theme:
++       - portrait_hdpi
++     graphics_backends:
++       - fbdev
++       - suported: true
++     max_brigtness:
++       - 255
++     TW_BRIGTNESS_PATH:
++       - /sis/class/leds/lcd-ackligts/brightness
++   flags:
++       - TW_HAS_DOWNLOAD_MODE: true
++       - TW_NO_REBOOT_BOOTLOADER: true
++       - BOARD_HAS_NO_REAL_SDCARD: true
++       - RECOVERY_SDCARD_ON_DATA: true -Lun file: sys/devices/platform/msm_hsusb/gadget/lun0/
++       - TW_INCLUDE_CRYPTO: true 
++       
++    
+- name: Samsung Galaxy S Duos 2
+  id: kyleprods
+  codenames:
+    - kyleprods
+  architecture: armeabi-v7a
+
+  block_devs:
+    base_dirs:
+      - /dev/block/platform/sdhci.1/by-name
+    system:
+      - /dev/block/platform/sdhci.1/by-name/system
+    cache:
+      - /dev/block/platform/sdhci.1/by-name/CSC
+    data:
+      - /dev/block/platform/sdhci.1/by-name/userdata
+    boot:
+      - /dev/block/platform/sdhci.1/by-name/KERNEL
+    recovery:
+      - /dev/block/platform/sdhci.1/by-name/RECOVERY
+    extra:
+      - /dev/block/platform/sdhci.1/by-name/HIDDEN
+      - /dev/block/platform/sdhci.1/by-name/efs
+      - /dev/block/platform/sdhci.1/by-name/modem
+
+  boot_ui:
+    supported: true
+    flags:
+      - TW_GRAPHICS_FORCE_USE_LINELENGTH
+      - TW_NO_SCREEN_TIMEOUT
+      - TW_NO_CPU_TEMP
+      - TW_HAS_DOWNLOAD_MODE
+      - TW_PREFER_LCD_BACKLIGHT
+    pixel_format: BGRA_8888
+    brightness_path: /sys/class/backlight/panel/brightness
+    max_brightness: 255
+    default_brightness: 128
+    battery_path: /sys/class/power_supply/battery/capacity
+    graphics_backends:
+      - fbdev
+    theme: portrait_hdpi
+
+- name: Samsung Galaxy Win
+  id: delos3geur
+  codenames:
+    # Main Codename
+    - delos3geur
+    - GT-I8552
+    - i8552
+    # Variant Names
+    - delos3gchn
+    - delos3gzc
+
+  architecture: armeabi-v7a
+
+  block_devs:
+
+    system:
+      - /dev/block/mmcblk0p21
+      - /dev/block/platform/msm_sdcc.3/by-num/p21
+      - /dev/block/bootdevice/by-num/p21
+
+    cache:
+      - /dev/block/mmcblk0p22
+      - /dev/block/platform/msm_sdcc.3/by-num/p22
+      - /dev/block/bootdevice/by-num/p22
+
+    data:
+      - /dev/block/mmcblk0p24
+      - /dev/block/platform/msm_sdcc.3/by-num/p24
+      - /dev/block/bootdevice/by-num/p24
+
+    boot:
+      - /dev/block/mmcblk0p8
+      - /dev/block/platform/msm_sdcc.3/by-num/p8
+      - /dev/block/bootdevice/by-num/p8
+
+    recovery:
+      - /dev/block/mmcblk0p13
+      - /dev/block/platform/msm_sdcc.3/by-num/p13
+      - /dev/block/bootdevice/by-num/p13
+
+  boot_ui:
+    supported: true
+    flags:
+      - TW_GRAPHICS_FORCE_USE_LINELENGTH
+      - TW_NO_CPU_TEMP
+      - TW_HAS_DOWNLOAD_MODE
+      - TW_QCOM_RTC_FIX
+      - TW_PREFER_LCD_BACKLIGHT
+    graphics_backends:
+      - fbdev
+    pixel_format: RGBX_8888
+    theme: portrait_hdpi
+
+- name: Samsung Galaxy Core
+  id: arubaslim
+  codenames:
+    # Main Codename
+    - arubaslim
+    - GT-I8262
+    - i8262
+
+  architecture: armeabi-v7a
+
+  block_devs:
+
+    system:
+      - /dev/block/mmcblk0p21
+      - /dev/block/platform/msm_sdcc.3/by-num/p21
+      - /dev/block/bootdevice/by-num/p21
+
+    cache:
+      - /dev/block/mmcblk0p22
+      - /dev/block/platform/msm_sdcc.3/by-num/p22
+      - /dev/block/bootdevice/by-num/p22
+
+    data:
+      - /dev/block/mmcblk0p24
+      - /dev/block/platform/msm_sdcc.3/by-num/p24
+      - /dev/block/bootdevice/by-num/p24
+
+    boot:
+      - /dev/block/mmcblk0p8
+      - /dev/block/platform/msm_sdcc.3/by-num/p8
+      - /dev/block/bootdevice/by-num/p8
+
+    recovery:
+      - /dev/block/mmcblk0p13
+      - /dev/block/platform/msm_sdcc.3/by-num/p13
+      - /dev/block/bootdevice/by-num/p13
+
+  boot_ui:
+    supported: true
+    flags:
+      - TW_GRAPHICS_FORCE_USE_LINELENGTH
+      - TW_NO_CPU_TEMP
+      - TW_HAS_DOWNLOAD_MODE
+      - TW_QCOM_RTC_FIX
+      - TW_PREFER_LCD_BACKLIGHT
+    graphics_backends:
+      - fbdev
+    pixel_format: RGBX_8888
+    theme: portrait_hdpi
+
+- name: Samsung Galaxy J2 3G
+  id: Galaxy-J2
+  codenames:
+    - j2
+    - j23g
+    - Galaxy-J2
+  architecture: armeabi-v7a
+
+  block_devs:
+    base_dirs:
+      - /dev/block/platform/sdio_emmc/by-name
+    system:
+      - /dev/block/platform/sdio_emmc/by-name/SYSTEM
+    cache:
+      - /dev/block/platform/sdio_emmc/by-name/CACHE
+    data:
+      - /dev/block/platform/sdio_emmc/by-name/userdata
+    boot:
+      - /dev/block/platform/sdio_emmc/by-name/KERNEL
+    recovery:
+      - /dev/block/platform/sdio_emmc/by-name/RECOVERY

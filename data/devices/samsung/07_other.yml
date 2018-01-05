@@ -24,6 +24,60 @@
     recovery:
       - /dev/block/platform/msm_sdcc.1/by-name/recovery
       - /dev/block/mmcblk0p15
+      
+      
++  - name: Samsung Galaxy Express GT-i8730
++    id: expresslte
++    codenames:
++       - expresslte
++       - expressltexx
++    architecture: armeabi_v7a
++
++    block_devs:
++      base_dirs: 
++       - /dev/block/platform/msm_sdcc.1/by-name
++    boot:
++       - /dev/block/platform/msm_sdcc.1/by-name/boot
++       - /dev/block/mmcblk0p7
++    recovery:
++       - /dev/block/platform/msm_sdcc.1/by-name/recovery
++       - /dev/block/mmcblk0p18
++    system:
++       - /dev/block/platform/msm_sdcc.1/by-name/system
++       - /dev/block/mmcblk0p14
++    cache:
++       - /dev/block/platform/msm_sdcc.1/by-name/cache
++       - /dev/block/mmcblk0p17
++    data:
++       - /dev/block/platform/msm_sdcc.1/by-name/userdata
++       - /dev/block/mmcblk0p15
++  extras:
++    aboot:
++       - /dev/block/platform/msm_sdcc.1/by-name/aboot
++       - /dev/block/mmcblk0p5
++  base_dirs: /dev/block/platform/msm_sdcc.3/by-name
++    Android_expand:
++       - /dev/block/platform/msm_sdcc.3/by-name/Android_expand
++       - /dev/block/mmcblk1p2
++    Android_meta:
++       - /dev/block/platform/msm_sdcc.3/by-name/Android_meta
++       - /dev/block/mmcblk1p1
++    bootui:
++      theme:
++       - portrait_hdpi
++     graphics_backends:
++       - fbdev
++       - suported: true
++     max_brigtness:
++       - 255
++     TW_BRIGTNESS_PATH:
++       - /sis/class/leds/lcd-backligts/brightness
++   flags:
++       - TW_HAS_DOWNLOAD_MODE: true
++       - TW_NO_REBOOT_BOOTLOADER: true
++       - BOARD_HAS_NO_REAL_SDCARD: true
++       - RECOVERY_SDCARD_ON_DATA: true -Lun file: sys/devices/platform/msm_hsusb/gadget/lun0/
++       - TW_INCLUDE_CRYPTO: true 
 
 
 - name: Samsung Galaxy Star
